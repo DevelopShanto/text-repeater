@@ -8,7 +8,7 @@ def index():
     if request.method == "POST":
         text = request.form.get("text", "")
         count = int(request.form.get("count", 1000))
-        # টেক্সট রিপিট করার লজিক
+        # Text 1000 bar repeat hobe niche niche
         result = (text + "\n") * count
     return render_template("index.html", result=result)
 

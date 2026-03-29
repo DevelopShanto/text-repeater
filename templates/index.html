@@ -4,24 +4,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Text Repeater - Shanto</title>
     <style>
-        body { background: #000; color: #00f2ea; font-family: monospace; text-align: center; padding: 20px; }
-        .box { background: #111; padding: 20px; border-radius: 15px; border: 1px solid #333; }
-        input { width: 85%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid #444; background: #000; color: #fff; outline: none; }
-        button { width: 90%; padding: 12px; background: #00f2ea; border: none; font-weight: bold; border-radius: 10px; cursor: pointer; color: #000; }
-        #output { background: #050505; padding: 15px; margin-top: 20px; white-space: pre-wrap; text-align: left; border: 1px solid #222; color: #fff; font-size: 14px; }
+        body { background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 15px; }
+        .salem { font-size: 26px; font-weight: bold; color: #00f2ea; text-shadow: 0 0 10px #00f2ea; margin-bottom: 5px; }
+        .header-info { background: linear-gradient(45deg, #ff0050, #00f2ea); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold; margin-bottom: 25px; font-size: 16px; }
+        .box { background: #111; padding: 25px; border-radius: 20px; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        input { width: 85%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid #444; background: #000; color: #00f2ea; outline: none; }
+        button { width: 90%; padding: 12px; background: #00f2ea; border: none; font-weight: bold; border-radius: 10px; cursor: pointer; color: #000; margin-top: 10px; font-size: 16px; }
+        .copy-btn { background: #ff0050; color: white; margin-top: 15px; width: auto; padding: 10px 40px; }
+        #output { background: #050505; padding: 15px; margin-top: 25px; white-space: pre-wrap; text-align: left; border: 1px solid #222; color: #fff; font-size: 14px; border-radius: 10px; }
     </style>
 </head>
 <body>
-    <h2>TEXT REPEATER (1000)</h2>
+    <div class="salem">As-salamu Alaykum</div>
+    <div class="header-info">TikTok: @shanto2993 | FB: Classic Boy Shanto</div>
+    
     <div class="box">
+        <h2 style="color: #444;">TEXT REPEATER</h2>
         <form method="POST">
-            <input type="text" name="text" placeholder="কী রিপিট করতে চাও?" required>
+            <input type="text" name="text" placeholder="Ki repeat korte chan?" required>
             <input type="number" name="count" value="1000">
-            <button type="submit">REPEAT NOW 🔥</button>
+            <button type="submit">REPEAT MAGIC 🔥</button>
         </form>
+
         {% if result %}
         <div id="output">{{ result }}</div>
+        <button class="copy-btn" onclick="copy()">COPY ALL 📋</button>
         {% endif %}
     </div>
+
+    <script>
+        function copy() {
+            var text = document.getElementById("output").innerText;
+            var elem = document.createElement("textarea");
+            document.body.appendChild(elem);
+            elem.value = text;
+            elem.select();
+            document.execCommand("copy");
+            document.body.removeChild(elem);
+            alert("Sokol text copy hoyeche! 🔥");
+        }
+    </script>
 </body>
 </html>
