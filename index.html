@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Repeater</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; text-align: center; background-color: #f4f4f4; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        textarea { width: 100%; height: 100px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-sizing: border-box; }
+        input[type="number"] { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { width: 45%; padding: 12px; margin: 5px; cursor: pointer; border-radius: 5px; border: none; font-weight: bold; color: white; }
+        #repeatBtn { background-color: #007bff; }
+        #copyBtn { background-color: #28a745; }
+        #output { border: 1px solid #ddd; padding: 15px; margin-top: 20px; min-height: 50px; background: #fff; text-align: left; white-space: pre-wrap; border-radius: 5px; word-wrap: break-word; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Text Repeater</h2>
+        <textarea id="inputText" placeholder="আপনার লেখাটি এখানে দিন..."></textarea>
+        <input type="number" id="count" placeholder="কয়বার রিপিট করবেন?">
+        
+        <button id="repeatBtn" onclick="repeatText()">Repeat</button>
+        <button id="copyBtn" onclick="copyToClipboard()">Copy Text</button>
+
+        <div id="output"></div>
+    </div>
+
+    <script>
+        function repeatText() {
+            let text = document.getElementById('inputText').value;
+            let num = document.getElementById('count').value;
+            let result = "";
+            if(!text || !num) { alert("সবগুলো বক্স পূরণ করুন!"); return; }
+            for(let i=0; i<num; i++) {
+                result += text + "\n";
+            }
+            document.getElementById('output').innerText = result;
+        }
+
+        function copyToClipboard() {
+            let text = document.getElementById('output').innerText;
+            if(!text) { alert("কপি করার মতো কিছু নেই!"); return; }
+            navigator.clipboard.writeText(text).then(() => {
+                alert("কপি হয়েছে!");
+            });
+        }
+    </script>
+</body>
+</html>
